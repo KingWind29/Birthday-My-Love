@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tết & Sinh Nhật</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tet.css">
+  <link rel="stylesheet" href="css/birthday.css">
+  <link rel="stylesheet" href="css/message.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/ending.css">
+</head>
+
+<body>
+
+  <audio id="bgm" loop>
+    <source src="assets/music/bgm.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="app">
+
+    <section id="s1" class="slide active">
+      <canvas class="fireworks"></canvas>
+      <div class="petals"></div>
+
+      <div class="zodiac-box">
+        <img src="assets/images/tet/horse.png" class="horse-img" alt="Bính Ngọ 2026">
+      </div>
+
+      <div class="tree-container left">
+        <img src="assets/images/tet/apricot.png" class="real-tree">
+      </div>
+
+      <div class="tree-container right">
+
+        <img src="assets/images/tet/blossom.png" class="real-tree">
+      </div>
+
+      <div class="main-title">
+        <h1 class="tet-title">
+          <span class="lucky-red-packet">🧧</span>
+          <span class="shimmer-text">Chúc Mừng Năm Mới 2026</span>
+        </h1>
+        <p>
+          Mùa xuân lại về mang theo yêu thương,<br>
+          mang theo hy vọng, và cả một lý do<br>
+          để anh mỉm cười nhiều hơn 💖
+        </p>
+      </div>
+    </section>
+
+    <section id="s2" class="slide">
+      <h1>Vì hôm nay…</h1>
+      <p>
+        Không chỉ là ngày đầu năm mới,<br>
+        mà còn là ngày em đến với thế giới này 🌷<br>
+        Ngày đặc biệt nhất trong tim anh ❤️
+      </p>
+    </section>
+
+    <section id="s3" class="slide">
+      <canvas id="pinkboard"></canvas>
+      <div class="avatar">
+        <img src="assets/images/her.jpg">
+      </div>
+      <div class="birthday-text">Happy Birthday<br>Em Yêu 💖</div>
+      <p>17 • 02 • 2026</p>
+    </section>
+
+    <section id="s3b" class="slide">
+      <!-- Các đốm sáng trang trí nền -->
+      <div class="bokeh" style="top: 10%; left: 10%;"></div>
+      <div class="bokeh" style="bottom: 10%; right: 10%; animation-delay: -5s;"></div>
+
+      <div class="long-message">
+        <p>Cảm ơn em vì đã đến bên anh,</p>
+        <p>vì đã mang lại những ngày thật đẹp,</p>
+        <p>thật ấm áp và đầy yêu thương.</p>
+        <p>Anh mong rằng những mùa xuân sau,</p>
+        <p>anh vẫn được nắm tay em ❤️</p>
+      </div>
+    </section>
+
+    <section id="s3c" class="slide">
+      <h2 class="gallery-title">Những khoảnh khắc đáng nhớ ✨</h2>
+
+      <div class="gallery">
+        <img src="assets/images/memories/1.jpg" alt="Memory">
+        <img src="assets/images/memories/3.jpg" alt="Memory">
+        <img src="assets/images/memories/4.jpg" alt="Memory">
+        <img src="assets/images/memories/5.jpg" alt="Memory">
+        <img src="assets/images/memories/6.jpg" alt="Memory">
+        <img src="assets/images/memories/7.jpg" alt="Memory">
+        <img src="assets/images/memories/8.jpg" alt="Memory">
+        <img src="assets/images/memories/9.jpg" alt="Memory">
+        <img src="assets/images/memories/10.jpg" alt="Memory">
+        <img src="assets/images/memories/11.jpg" alt="Memory">
+        <img src="assets/images/memories/12.jpg" alt="Memory">
+        <img src="assets/images/memories/13.jpg" alt="Memory">
+      </div>
+    </section>
+
+    <section id="s4" class="slide">
+      <div class="cake-container">
+        <svg class="cake" viewBox="0 0 200 200">
+          <!-- Tầng dưới -->
+          <rect x="40" y="120" width="120" height="50" rx="10" fill="#f48fb1" />
+          <path d="M40 140 Q70 150 100 140 T160 140" fill="none" stroke="#ad1457" stroke-width="2" opacity="0.3" />
+
+          <!-- Tầng trên -->
+          <rect x="60" y="85" width="80" height="40" rx="8" fill="#fce4ec" />
+
+          <!-- Kem chảy -->
+          <path d="M60 95 q10 10 20 0 t20 0 t20 0 t20 0" fill="#fce4ec" transform="translate(0, 5)" />
+
+          <!-- Nến -->
+          <g class="candles">
+            <g class="candle" transform="translate(75, 65)">
+              <rect x="0" y="0" width="4" height="20" fill="#64b5f6" />
+              <path class="flame" d="M2 -2 Q5 -10 2 -15 Q-1 -10 2 -2" fill="#ffca28" />
+            </g>
+            <g class="candle" transform="translate(100, 60)">
+              <rect x="0" y="0" width="4" height="25" fill="#ce93d8" />
+              <path class="flame" d="M2 -2 Q5 -10 2 -15 Q-1 -10 2 -2" fill="#ffca28" />
+            </g>
+            <g class="candle" transform="translate(125, 65)">
+              <rect x="0" y="0" width="4" height="20" fill="#81c784" />
+              <path class="flame" d="M2 -2 Q5 -10 2 -15 Q-1 -10 2 -2" fill="#ffca28" />
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="final-text">
+        <h1 class="hb-title">Happy Birthday</h1>
+        <h2 class="ily-text">I Love You ❤️</h2>
+
+      </div>
+
+      <div id="lixi-wrapper" class="hidden">
+    <div class="lixi-container" id="lixi-card">
+      <div class="envelope">
+        <div class="flap"></div>
+        <div class="body">🧧</div>
+      </div>
+      <div class="lucky-card">
+        <h3>Lì Xì May Mắn</h3>
+        <div id="lucky-amount">000.000đ</div>
+        <p>Chúc em một năm mới <br> rực rỡ và hạnh phúc!</p>
+      </div>
+
+        <div id="reward-notification" class="reward-hidden">
+        <div class="reward-content">
+            <p>Chúc mừng Em nhận được</p>
+            <h2 id="reward-amount">520.000đ</h2>
+            <div class="sparkles-wrap">✨ ✨ ✨</div>
+        </div>
+    </div>
+    </div>
+    <p class="tap-hint">Chạm vào bao lì xì để nhận quà ❤️</p>
+  </div>
+    </section>
+
+  </div>
+
+  <script src="js/slider.js"></script>
+  <script src="js/fireworks.js"></script>
+  <script src="js/petals.js"></script>
+  <script src="js/heart.js"></script>
+  <script src="js/ending.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+#s3 {
+  background: radial-gradient(circle at center, #2b002b 0%, #000 100%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+}
+
+#pinkboard {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 95%; height: 95%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+/* --- Hiệu ứng Avatar --- */
+.avatar {
+  position: relative;
+  z-index: 10;
+  width: min(160px, 45vw);
+  height: min(160px, 45vw);
+  border-radius: 50%;
+  border: 5px solid #fff;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+  margin-bottom: 25px;
+  
+  /* Trạng thái ẩn */
+  opacity: 0;
+  transform: scale(0) rotate(-20deg);
+}
+
+#s3.active .avatar {
+  animation: avatarPopIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Hiệu ứng Text Chúc mừng --- */
+.birthday-text {
+  position: relative;
+  z-index: 10;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.2rem, 10vw, 4rem);
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+  
+  /* Tạo hiệu ứng chữ hồng phát sáng */
+  background: linear-gradient(to bottom, #ffffff 0%, #ff8bb0 50%, #ff2079 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Trạng thái ẩn */
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+#s3.active .birthday-text {
+  animation: 
+    birthdayTextIn 1.5s ease-out forwards 1.2s,
+    pinkShimmer 3s infinite ease-in-out 2.7s;
+}
+
+/* --- Hiệu ứng Ngày sinh --- */
+#s3 p {
+  position: relative;
+  z-index: 10;
+  margin-top: 15px;
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  letter-spacing: 5px; /* Giãn chữ cho sang trọng */
+  color: #ffb7d5;
+  font-weight: 300;
+  text-shadow: 0 0 10px rgba(255, 183, 213, 0.5);
+  
+  /* Trạng thái ẩn */
+  opacity: 0;
+}
+
+#s3.active p {
+  animation: dateFadeIn 1s ease forwards 2s;
+}
+
+/* --- Các Keyframes chuyển động --- */
+
+@keyframes avatarPopIn {
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes birthdayTextIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dateFadeIn {
+  to { opacity: 1; }
+}
+
+/* Hiệu ứng lấp lánh hồng neon */
+@keyframes pinkShimmer {
+  0%, 100% { filter: brightness(1) drop-shadow(0 0 10px rgba(255, 32, 121, 0.5)); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 25px rgba(255, 32, 121, 0.8)); }
+}

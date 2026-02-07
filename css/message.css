@@ -1,0 +1,128 @@
+#s2 {
+  background: radial-gradient(circle, #2c003e 0%, #000000 100%);
+}
+
+#s2 h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #ffeb3b;
+  text-shadow: 0 0 20px rgba(255, 235, 59, 0.5);
+  transform: translateY(50px);
+  opacity: 0;
+  transition: 1.2s all ease-out 0.3s;
+}
+
+#s2 p {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+  line-height: 2.2rem;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: 1.2s all ease-out 0.8s; /* Xuất hiện sau h1 */
+}
+
+#s2.active h1, #s2.active p {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --- Tối ưu Slide s3 (Trái tim & Avatar) --- */
+#s3 .avatar {
+  border: 5px solid #fff;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+  transform: scale(0) rotate(-15deg);
+  transition: 1.5s all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+#s3.active .avatar {
+  transform: scale(1) rotate(0deg);
+}
+
+#s3 .birthday-text {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s all ease 1.2s;
+}
+
+#s3.active .birthday-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Tối ưu Slide s3b: Cinematic Typography --- */
+#s3b {
+  perspective: 1500px;
+  background: radial-gradient(circle at center, #250025 0%, #000 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container chứa text giờ sẽ full màn hình */
+.long-message {
+  max-width: 90%;
+  background: none; /* Bỏ khung */
+  border: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.long-message p {
+  font-family: 'Dancing Script', cursive; /* Hoặc font chữ mềm mại */
+  font-size: 2rem;
+  color: #fff;
+  margin: 20px 0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 30px rgba(255, 105, 180, 0.2);
+  
+  /* Hiệu ứng mặc định: Nằm sâu trong không gian 3D */
+  opacity: 0;
+  transform: translateZ(-300px) translateY(20px) rotateX(10deg);
+  transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Khi slide active: Từng dòng chữ sẽ bay về phía người xem */
+#s3b.active .long-message p:nth-child(1) { 
+    opacity: 1; transform: translateZ(0) translateY(0) rotateX(0); transition-delay: 0.5s; 
+}
+#s3b.active .long-message p:nth-child(2) { 
+    opacity: 1; transform: translateZ(0) translateY(0) rotateX(0); transition-delay: 1.5s; 
+}
+#s3b.active .long-message p:nth-child(3) { 
+    opacity: 1; transform: translateZ(0) translateY(0) rotateX(0); transition-delay: 2.5s; 
+}
+#s3b.active .long-message p:nth-child(4) { 
+    opacity: 1; transform: translateZ(0) translateY(0) rotateX(0); transition-delay: 4s; 
+}
+#s3b.active .long-message p:nth-child(5) { 
+    opacity: 1; transform: translateZ(0) translateY(0) rotateX(0); transition-delay: 5.5s; 
+}
+
+/* Hiệu ứng chữ phát sáng nhẹ nhàng */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(255, 192, 203, 0.8), 0 0 40px rgba(255, 105, 180, 0.4); }
+}
+
+#s3b.active .long-message p {
+  animation: textGlow 4s infinite ease-in-out;
+}
+
+/* Thêm các đốm sáng bokeh bay phía sau */
+.bokeh {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,105,180,0.1) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(40px);
+    animation: moveBokeh 15s infinite alternate;
+}
+
+@keyframes moveBokeh {
+    from { transform: translate(-20%, -20%); }
+    to { transform: translate(20%, 20%); }
+}

@@ -1,0 +1,302 @@
+#s4 {
+  background: radial-gradient(circle at center, #1a001a 0%, #000 100%);
+}
+
+.cake {
+  width: 250px;
+  height: 250px;
+}
+
+/* Hiệu ứng ngọn nến lung linh */
+.flame {
+  animation: flicker 0.6s infinite alternate;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 0 8px #ffeb3b);
+}
+
+@keyframes flicker {
+  0% { transform: scale(1) rotate(-2deg); opacity: 0.8; }
+  100% { transform: scale(1.1) rotate(2deg); opacity: 1; }
+}
+
+@keyframes cakeFloat {
+  50% { transform: translateY(-15px); }
+}
+
+/* Chữ kết thúc */
+#s4 .final-text {
+  margin-top: 20px;
+}
+
+.hb-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.5rem, 12vw, 4.5rem);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(244, 143, 177, 0.8);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+}
+
+.ily-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  margin-top: 10px;
+  letter-spacing: 5px;
+  font-weight: 300;
+  
+  /* Gradient hồng đào mượt mà */
+  background: linear-gradient(90deg, #ff4081, #ff80ab, #ff4081);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  opacity: 0;
+  transition: all 2s ease 1.5s;
+}
+
+/* Khi slide active */
+#s4.active .hb-title {
+  opacity: 1;
+  transform: scale(1);
+}
+
+#s4.active .ily-text {
+  opacity: 1;
+  animation: heartBeat 3s infinite, shine 4s linear infinite;
+}
+
+/* Animation nhịp đập trái tim cho chữ */
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,64,129,0.5)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255,64,129,0.9)); }
+}
+
+/* Animation chạy sáng ngang dòng chữ */
+@keyframes shine {
+  to { background-position: 200% center; }
+}
+
+/* Nâng cấp Bánh Kem */
+.cake-container {
+  transform: scale(0.8);
+  transition: all 1.5s ease;
+  opacity: 0;
+}
+
+#s4.active .cake-container {
+  transform: scale(1);
+  opacity: 1;
+}
+
+@keyframes textGlow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(255,64,129,0.3)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255,64,129,0.8)); }
+}
+
+/* Đốm sáng lấp lánh (Sparkles) */
+.sparkle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: blink 3s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.8; transform: scale(1.2); }
+}
+
+#lixi-wrapper {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 1s ease;
+  backdrop-filter: blur(10px);
+  pointer-events: auto;
+}
+
+#lixi-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lixi-container {
+  position: relative;
+  width: 180px;
+  height: 260px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 201; 
+}
+
+.envelope {
+  position: absolute;
+  width: 100%; height: 100%;
+  background: #d32f2f;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.envelope .flap {
+  position: absolute;
+  top: 0; width: 100%; height: 50%;
+  background: #b71c1c;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 3;
+}
+
+/* Khi mở bao lì xì */
+.lixi-container.open .flap {
+  transform: rotateX(180deg);
+}
+
+.lixi-container.open .lucky-card {
+  transform: translateY(-80px) translateZ(-1px);
+  opacity: 1;
+}
+
+/* Thẻ bài hiển thị con số */
+.lucky-card {
+  position: absolute;
+  top: 20px; left: 10px;
+  width: 160px; height: 220px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.lucky-card h3 { color: #d32f2f; font-size: 1rem; margin-bottom: 10px; }
+#lucky-amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fbc02d;
+  text-shadow: 1px 1px 0 #000;
+  margin-bottom: 10px;
+}
+.lucky-card p { color: #555; font-size: 0.8rem; line-height: 1.2; }
+
+.tap-hint {
+  color: #fff;
+  margin-top: 30px;
+  font-size: 1rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* --- Hiệu ứng Thông báo phần thưởng --- */
+#reward-notification {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 300;
+  width: 280px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.5);
+  text-align: center;
+  pointer-events: none;
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#reward-notification.show-reward {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.reward-content p {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+#reward-amount {
+  font-size: 2.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  /* Chữ vàng kim loại */
+  background: linear-gradient(to bottom, #fff3a0, #ffd700, #b8860b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));
+  animation: moneyPulse 1s infinite alternate;
+}
+
+.sparkles-wrap {
+  margin-top: 15px;
+  font-size: 1.5rem;
+  letter-spacing: 15px;
+}
+
+.reward-hidden {
+    display: none;
+}
+#reward-notification.show-reward {
+    display: block; /* Hiện ra khi có class */
+    animation: popIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes popIn {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+/* Hiệu ứng rung rinh cho số tiền */
+@keyframes moneyPulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Che mờ hậu cảnh khi nhận quà */
+.reward-overlay {
+  background: rgba(0,0,0,0.9) !important;
+}
+
+
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(5px, -5px); }
+  50% { transform: translate(-5px, 5px); }
+  75% { transform: translate(5px, 5px); }
+}
+
+/* Thêm class này để kích hoạt rung khi cần */
+.shake-ani {
+  animation: shake 0.5s ease;
+}
